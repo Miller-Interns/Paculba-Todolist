@@ -1,17 +1,14 @@
 <script setup lang="ts">
 defineProps<{
   msg: string
+  date: string
 }>()
 </script>
 
 <template>
   <div class="greetings">
     <h1 class="green">{{ msg }}</h1>
-    <h3>
-      You’ve successfully created a project with
-      <a href="https://vite.dev/" target="_blank" rel="noopener">Vite</a> +
-      <a href="https://vuejs.org/" target="_blank" rel="noopener">Vue 3</a>. What's next?
-    </h3>
+    <h2 class="gray">{{date}}</h2>
   </div>
 </template>
 
@@ -21,21 +18,21 @@ h1 {
   font-size: 2.6rem;
   position: relative;
   top: -10px;
+  margin-bottom: 0;
 }
 
-h3 {
-  font-size: 1.2rem;
+h2 {
+  font-size: 2 rem;
+   margin-top: 0;
 }
 
-.greetings h1,
-.greetings h3 {
+.greetings{
   text-align: center;
 }
 
 @media (min-width: 1024px) {
-  .greetings h1,
-  .greetings h3 {
-    text-align: left;
+  .greetings{
+    text-align: center;
   }
 }
 </style>

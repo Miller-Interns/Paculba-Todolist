@@ -1,19 +1,17 @@
 <script setup lang="ts">
 import HelloWorld from '@/components/HelloWorld.vue';
-import Button from '@/components/Button.vue';
+
 </script>
 
+
 <template>
-  <div class="container">
-    <div class="center-content">
-      <HelloWorld msg="HERIEL KAYE U. PACULBA" />
-      <HelloWorld date="July 10, 2025" />
-      <Button/>
+  <div class="center-content">
+      <HelloWorld msg="TO DO" />
+      
   </div>
-</div>
 </template>
 
-<style scoped>
+<style>
 .full-height-container {
   height: 100vh;
   width: 100vw;
@@ -21,13 +19,10 @@ import Button from '@/components/Button.vue';
 
 .center-content {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  height: 100vh;
-  width: 100vw;
-  gap: 1rem;
+  height: 100%;
 }
 
 .center-content h1 {
