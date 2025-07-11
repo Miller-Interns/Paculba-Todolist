@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import HelloWorld from '@/components/HelloWorld.vue';
-import Button from '@/components/Button.vue';
+import profileFormat from '@/components/profile-format.vue';
+import todoButton from '@/components/button-todo.vue';
 </script>
 
 <template>
-  <div class="container">
+  <div class="full-height-container">
     <div class="center-content">
-      <HelloWorld msg="HERIEL KAYE U. PACULBA" />
-      <HelloWorld date="July 10, 2025" />
-      <Button/>
+      <profileFormat msg="HERIEL KAYE U. PACULBA" />
+      <profileFormat date="July 10, 2025" />
+      <todoButton/>
   </div>
 </div>
 </template>

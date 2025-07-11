@@ -7,8 +7,8 @@ defineProps<{
 
 <template>
   <div class="greetings">
-    <h1 class="green">{{ msg }}</h1>
-    <h2 class="gray">{{date}}</h2>
+    <h1 class="blue">{{ msg }}</h1>
+    <h2 class="white">{{date}}</h2>
   </div>
 </template>
 
