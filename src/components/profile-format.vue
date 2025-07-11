@@ -17,13 +17,13 @@ h1 {
   font-weight: 500;
   font-size: 2.6rem;
   position: relative;
-  top: -10px;
+  top: 0px;
   margin-bottom: 0;
 }
 
 h2 {
   font-size: 2 rem;
-   margin-top: 0;
+   top: 0px;
 }
 
 .greetings{

@@ -1,6 +1,16 @@
 <script setup lang="ts">
 import buttonsFormat from '@/components/buttons-format.vue';
-import { useRouter } from 'vue-router'
+import { ref } from 'vue'
+
+const showCategories = ref(false)
+
+function toggleCategories() {
+  showCategories.value = !showCategories.value
+}
+
+function handleAdd() {
+  // Your logic for adding tasks
+}
 </script>
 
 <template>
@@ -8,75 +18,88 @@ import { useRouter } from 'vue-router'
     <div class="navbar-title">ToDo App</div>
     <div class="navbar-links">
       <router-link to="/">Home</router-link>
-      <!-- <router-link to="/todo">ToDo</router-link> -->
     </div>
   </nav>
-  <div class="full-height-container">
-    <div class="center-content">
-      <profileFormat msg="HERIEL KAYE U. PACULBA" date="July 10, 2025"></profileFormat>
+  
+  <div class="full-height-container" :class="{ 'expanded': showCategories }">
+    
+    <!-- Add Tasks Section -->
+    <div class="add-category">
+      <h2>Add Tasks</h2>
+      <input type="text" placeholder="Title: " />
+      <input type="text" placeholder="Tasks: " />
+      <buttonsFormat
+        :showAdd="true"
+        :showEdit="false"
+        :showDelete="false"
+        @add="handleAdd"
+      />
+      <button @click="toggleCategories" class="toggle-button">
+        {{ showCategories ? 'Hide Tasks' : 'Show Tasks' }}
+      </button>
     </div>
+
+    <!-- All Tasks Section -->
+    <div v-if="showCategories" class="all-tasks-container">
+      <h3>All Tasks</h3>
+      <!-- Replace with real tasks -->
+      <ul>
+        <li>Sample Task 1</li>
+        <li>Sample Task 2</li>
+        <li>Sample Task 3</li>
+        <li>Sample Task 1</li>
+        <li>Sample Task 2</li>
+        <li>Sample Task 3</li>
+        <li>Sample Task 1</li>
+        <li>Sample Task 2</li>
+        <li>Sample Task 3</li><li>Sample Task 1</li>
+        <li>Sample Task 2</li>
+        <li>Sample Task 3</li><li>Sample Task 1</li>
+        <li>Sample Task 2</li>
+        <li>Sample Task 3</li>
+      </ul>
+    </div>
+
   </div>
 </template>
 
 <style scoped>
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 60px;
-  background: #1976d2;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 2rem;
-  box-sizing: border-box;
-  z-index: 1000;
-}
-
-.navbar-title {
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-.navbar-links {
-  display: flex;
-  gap: 1.5rem;
-}
-
-.navbar-links a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.2s;
-}
-
-.navbar-links a.router-link-exact-active {
-  text-decoration: underline;
-}
-
-.navbar-links a:hover {
-  color: #bbdefb;
-}
-
 .full-height-container {
-  margin-top: 60px;
-  height: calc(100vh - 60px);
+  min-height: calc(100vh - 60px);
   width: 100vw;
-}
-
-
-.center-content {
+  margin: 0;
+  padding: 2rem;
   display: flex;
+  flex-direction: column; /* Vertical layout */
   justify-content: center;
   align-items: center;
-  text-align: center;
-  height: 100%;
-  width: 100%
+  gap: 2rem;
 }
 
-.center-content h1 {
-  margin-bottom: 20px;
+.full-height-container.expanded {
+  justify-content: flex-start;
+  align-items: center;
 }
+
+.add-category {
+  width: 70vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.all-tasks-container {
+  width: 70vw;
+  max-height: 300px; /* or any fixed height you want */
+  overflow-y: auto;
+  background-color: #f8f9fa;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
 </style>
