@@ -52,9 +52,9 @@ function handleAdd() {
         <li>Sample Task 3</li>
         <li>Sample Task 1</li>
         <li>Sample Task 2</li>
-        <li>Sample Task 3</li><li>Sample Task 1</li>
+        <li>Sample Task 3</li>
         <li>Sample Task 2</li>
-        <li>Sample Task 3</li><li>Sample Task 1</li>
+        <li>Sample Task 3</li>
         <li>Sample Task 2</li>
         <li>Sample Task 3</li>
       </ul>
