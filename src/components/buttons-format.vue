@@ -2,21 +2,23 @@
 import addIcon from './icons/icon-add.vue'
 import editIcon from './icons/icon-edit.vue'
 import deleteIcon from './icons/icon-delete.vue'
+import saveIcon from './icons/icon-check.vue'
+
 
 const props = defineProps({
   showAdd: { type: Boolean, default: true },
   showEdit: { type: Boolean, default: true },
-  showDelete: { type: Boolean, default: true }
+  showDelete: { type: Boolean, default: true },
+  showSave: { type: Boolean, default: true }
 })
 
-const emit = defineEmits(['add', 'edit', 'delete'])
+const emit = defineEmits(['add', 'edit', 'delete', 'save'])
 </script>
 
 <template>
   <div class="button-container">
     <button v-if="props.showAdd" @click="$emit('add')">
       <addIcon style="width: 1em; height: 1em; vertical-align: middle;" />
-      ADD
     </button>
 
     <button v-if="props.showEdit" @click="$emit('edit')">
@@ -28,6 +30,13 @@ const emit = defineEmits(['add', 'edit', 'delete'])
       <deleteIcon style="width: 1em; height: 1em; vertical-align: middle;" />
       DELETE
     </button>
+
+    <button v-if="props.showSave" @click="$emit('save')">
+      SAVE<saveIcon style="width: 1em; height: 1em; vertical-align: middle;" />
+    </button>
+
+    
+
   </div>
 </template>
 
@@ -42,17 +51,18 @@ button {
   display: flex;
   align-items: center;
   gap: 0.4rem;
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  background-color: #1976d2;
-  color: white;
+  padding: 0.3rem 1rem;
+  font-size: 0.8rem;
+  background-color: #efbdbd;
+  color: black;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: 0.2s;
+
 }
 
 button:hover {
-  background-color: #1565c0;
+  background-color: #bbb7e5;
 }
 </style>
