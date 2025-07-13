@@ -59,6 +59,7 @@ button {
   border-radius: 4px;
   cursor: pointer;
   transition: 0.2s;
+  font-weight: bold;
 
 }
 
