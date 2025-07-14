@@ -10,7 +10,7 @@ function goToTodo() {
 
 <template>
   <button @click="goToTodo">
-    <addIcon style="width: 1em; height: 1em; vertical-align: middle;" />
+    <addIcon style="width: 1em; height: 1em; vertical-align: middle" />
     GET STARTED
   </button>
 </template>
@@ -19,14 +19,15 @@ function goToTodo() {
 button {
   padding: 0.5rem 1rem;
   font-size: 1rem;
-  background-color: #1976d2;
-  color: white;
+ background-color: #bbb7e5;
+  color: black;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   transition: background 0.2s;
+  font-weight: bold;
 }
 button:hover {
-  background-color: #1565c0;
+  background-color: #aaa6cd;
 }
 </style>

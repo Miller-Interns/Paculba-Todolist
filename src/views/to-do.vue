@@ -40,45 +40,11 @@ const addTask = () => {
   }
 }
 
-// const taskTitle = ref('')
-// const taskSubtasks = ref<string[]>([])
-// const taskCompleted = ref(false)
-
-// const props = defineProps<{
-//   group: TaskGroup
-// }>()
-
-// const emit = defineEmits<{
-//   (e: 'toggle-subtask', groupId: string, subtaskId: string, completed: boolean): void
-//   (e: 'edit-subtask', groupId: string, subtaskId: string, label: string): void
-//   (e: 'add-task', title: string, subtasks: string[]): void
-// }>()
-
-// const handleToggle = (subtaskId: string, completed: boolean) => {
-//   emit('toggle-subtask', props.group.id, subtaskId, completed)
-// }
-
-// const handleEdit = (subtaskId: string, label: string) => {
-//   emit('edit-subtask', props.group.id, subtaskId, label)
-// }
-
 const showCategories = ref(false)
 
 function toggleCategories() {
   showCategories.value = !showCategories.value
 }
-
-// function handleAdd() {
-//   if (taskTitle.value.trim()) {
-//     emit('add-task', taskTitle.value, taskSubtasks.value)
-//     taskTitle.value = ''
-//     taskSubtasks.value = []
-//   }
-// }
-
-// function addNewSubtask() {
-//   taskSubtasks.value.push('')
-// }
 </script>
 
 <template>
@@ -116,7 +82,7 @@ function toggleCategories() {
           <button @click="removeSubtask(index)" class="remove-subtask">✕</button>
         </div>
 
-        <!-- <button @click="addSubtask" class="add-subtask-btn">Add Subtask</button> -->
+        <button @click="addSubtask" class="add-subtask-btn">ADD</button>
       </div>
 
       <!-- ✅ ACTION BUTTON -->
@@ -132,23 +98,27 @@ function toggleCategories() {
     <!-- All Tasks Section -->
     <div v-if="showCategories" class="all-tasks-container">
       <h3>All Tasks</h3>
-      <ul>
-        <draggable v-model="store.tasks" item-key="id" class="space-y-2" ghost-class="ghost">
+
+      <div class="task-main-row">
+        <div class = "subtask-link">
+        <draggable v-model="store.tasks" item-key="id" class="tasks-list" ghost-class="ghost">
           <template #item="{ element }">
-            <taskContainer
-              :task="element"
-              @update-task="store.updateTask"
-              @delete-task="store.deleteTask"
-            />
+            <div class="task-item">
+              <taskContainer
+                :task="element"
+                @update-task="store.updateTask"
+                @delete-task="store.deleteTask"
+              />
+            </div>
           </template>
         </draggable>
-      </ul>
+      </div>
+      </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-/* Global container */
 .full-height-container {
   min-height: calc(100vh - 60px);
   width: 100%;
@@ -167,37 +137,14 @@ function toggleCategories() {
   justify-content: flex-start;
 }
 
-/* Navbar */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  background-color: #f0f0f0;
-  border-bottom: 1px solid #ddd;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.navbar-title {
-  font-weight: bold;
-  font-size: 1.2rem;
-}
-
-.navbar-links a {
-  margin-left: 1rem;
-  text-decoration: none;
-  color: #333;
-}
-
-/* Add category (Add Task) */
 .add-category {
+  border: none;
   overflow-y: auto;
-  max-height: 300px;
+  max-height: 250px;
   background-color: #f8dada;
   padding: 2rem;
   border-radius: 16px;
-  width: 50%;
+  width: 50vw;
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -206,7 +153,7 @@ function toggleCategories() {
 }
 
 .task-section {
-  background-color: #fff;
+  background-color: #efbdbd;
   padding: 1rem;
   border-radius: 8px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
@@ -217,6 +164,17 @@ function toggleCategories() {
   display: block;
   font-weight: bold;
   margin-bottom: 0.5rem;
+}
+
+.task-title-input {
+  border: none;
+  border-bottom: 2px solid #333; /* Underline only */
+  font-weight: bold; /* Make text bold */
+  padding: 0.25rem 0;
+  outline: none;
+  background: transparent;
+  flex: 1;
+  min-width: 150px;
 }
 
 .subtasks-list {
@@ -237,7 +195,20 @@ function toggleCategories() {
   cursor: pointer;
 }
 
-/* ✅ Task Title input */
+.tasks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.task-item {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  background: #ffffff;
+}
+
+
 .task-input {
   width: 100%;
   padding: 0.5rem;
@@ -245,7 +216,7 @@ function toggleCategories() {
   border-radius: 6px;
 }
 
-/* ✅ Each subtask input */
+
 .subtask-input {
   flex: 1;
   padding: 0.5rem;
@@ -253,48 +224,38 @@ function toggleCategories() {
   border-radius: 6px;
 }
 
-/* ✅ Subtask checkbox label */
+
 .subtask-checkbox {
   display: flex;
   align-items: center;
   gap: 0.25rem;
 }
 
-/* ✅ Remove subtask button */
-.remove-subtask {
-  background: transparent;
-  border: none;
-  color: #e3342f; /* same as text-red-500 */
-  font-weight: bold;
-  cursor: pointer;
-}
 
-.remove-subtask:hover {
-  color: #cc1f1a;
-}
 
-/* ✅ Add subtask button */
 .add-subtask-btn {
-  background-color: #059669; /* same as bg-green-600 */
-  color: #fff;
+  background-color: #e5aaaa;
+  color: black;
   padding: 0.5rem 1rem;
   border-radius: 6px;
   border: none;
   cursor: pointer;
+  font-weight: bold;
 }
 
 .add-subtask-btn:hover {
-  background-color: #047857;
+  background-color: #b6c687;
 }
 
-/* ✅ Save task button */
+
 .save-task-btn {
-  background-color: #2563eb; /* same as bg-blue-600 */
-  color: #fff;
+  background-color: #e5aaaa;
+  color: black;
   padding: 0.75rem 1.5rem;
   border-radius: 6px;
   border: none;
   cursor: pointer;
+  font-weight: bold;  
 }
 
 .save-task-btn:hover {
@@ -353,12 +314,11 @@ function toggleCategories() {
 .toggle-button:hover {
   background-color: #e5aaaa;
 }
-
 .all-tasks-container {
-  width: 50%;
-  max-height: 300px;
+  width: 50vw;
   overflow-y: auto;
-  background-color: #f8f9fa;
+  max-height: 200px;
+  background-color: #f8dada;
   padding: 2rem;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
@@ -367,12 +327,30 @@ function toggleCategories() {
 
 .all-tasks-container h3 {
   margin-bottom: 1rem;
+  font-size: bold;
 }
 
 .all-tasks-container ul {
   list-style: none;
   padding: 0;
   margin: 0;
+  display: flex; /* Make it flex column */
+  flex-direction: column;
+  gap: 1rem; /* Add space between task containers */
+}
+
+.all-tasks-container li {
+  width: 100%;
+}
+
+.task-container {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #ddd;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
 }
 
 .ghost {
