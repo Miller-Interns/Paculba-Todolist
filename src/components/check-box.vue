@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 // import { useTaskStore } from '@/stores/tasks-store';
-import type { Subtask } from '@/stores/tasks-store'
+import type { Subtask } from '@/composables/tasks-store'
 
 const props = defineProps<{
   groupId: string

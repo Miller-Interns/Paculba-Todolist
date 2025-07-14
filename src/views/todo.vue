@@ -75,7 +75,7 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import { useTaskStore } from '@/stores/tasks-store'
+import { useTaskStore } from '@/composables/tasks-store'
 
 const taskStore = useTaskStore()
 const newGroupTitle = ref('')

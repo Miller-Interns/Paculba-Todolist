@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<!-- <script setup lang="ts">
 import addIcon from './icons/icon-add.vue'
 import editIcon from './icons/icon-edit.vue'
 import deleteIcon from './icons/icon-delete.vue'
@@ -66,4 +66,32 @@ button {
 button:hover {
   background-color: #bbb7e5;
 }
-</style>
+</style> -->
+
+<!-- ButtonFormats.vue -->
+<template>
+  <div class="flex gap-2">
+    <button
+      v-for="button in buttons"
+      :key="button.label"
+      :class="button.class"
+      @click="button.onClick"
+      class="flex items-center gap-1"
+    >
+      <component :is="button.icon" class="w-4 h-4" />
+      <span>{{ button.label }}</span>
+    </button>
+  </div>
+</template>
+
+<script setup lang="ts">
+defineProps<{
+  buttons: {
+    label: string
+    class?: string
+    icon: any  // Vue icon component
+    onClick: () => void
+  }[]
+}>()
+</script>
+
