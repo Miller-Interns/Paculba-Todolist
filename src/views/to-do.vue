@@ -2,7 +2,7 @@
 import taskContainer from '@/components/task-container.vue'
 import { ref, onMounted } from 'vue'
 import draggable from 'vuedraggable'
-import { useTasksStore } from '@/composables/tasks-store.ts'
+import { useTasksStore } from '@/stores/tasks-store'
 import type { Task, Subtask } from '@/types/types.ts'
 
 const store = useTasksStore()
