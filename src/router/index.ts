@@ -1,16 +1,29 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import TodoView from '../views/ToDo.vue'
+import HomeView from '../views/home-view.vue'
+import TodoView from '../views/to-do.vue'
+
+export enum RouteName {
+  HOME = 'home',
+  TODOLIST = 'toDoList'
+}
 
 const routes = [
-  { path: '/', name: 'Home', component: HomeView },
-  { path: '/todo', name: 'Todo', component: TodoView }
+  {
+    path: '/',
+    name: RouteName.HOME,
+    component: HomeView,
+  },
+  {
+    path: '/to-do',
+    name: RouteName.TODOLIST,
+    component: TodoView
+  }
+
 ]
 
 const router = createRouter({
   history: createWebHistory(),
-  routes
-})
-
+  routes,
+});
 export default router
 

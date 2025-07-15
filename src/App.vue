@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterView } from 'vue-router'
 
 </script>
+
 <template>
   <main class="app-container">
-   <RouterView />
+   <router-view></router-view>
   </main>
-
 </template>
 
 <style scoped>
@@ -19,3 +19,4 @@ import { RouterLink, RouterView } from 'vue-router'
   align-items: center;
 }
 </style>
+c

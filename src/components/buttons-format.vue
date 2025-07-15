@@ -1,50 +1,53 @@
 <script setup lang="ts">
-import addIcon from './icons/icon-add.vue'
-import editIcon from './icons/icon-edit.vue'
-import deleteIcon from '.icons/icon-delete.vue'
-
+defineProps<{
+  buttons: {
+    label: string
+    class?: string
+    icon: any
+    onClick: () => void
+  }[]
+}>()
 </script>
 
 <template>
   <div class="button-container">
-    <button>
-      <addIcon style="width: 1em; height: 1em; vertical-align: middle;" />
-      ADD
-    </button>
-    <button>
-      <editIcon style="width: 1em; height: 1em; vertical-align: middle;" />
-      EDIT
-    </button>
-    <button>
-      <deleteIcon style="width: 1em; height: 1em; vertical-align: middle;" />
-      DELETE
+    <button
+      v-for="button in buttons"
+      :key="button.label"
+      :class="button.class"
+      @click="button.onClick"
+      class="flex items-center gap-1"
+    >
+      <component :is="button.icon" class="w-4 h-4" />
+      <span>{{ button.label }}</span>
     </button>
   </div>
 </template>
 
 <style scoped>
-
-button-container {
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  background-color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+.button-container {
+  display: flex;
+  gap: 0.75rem;
+  padding: 1rem;
 }
 
 button {
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  background-color: #1976d2;
-  color: white;
+  width: 2rem;
+  height: 2rem;
+  color: black;
+  background: #efbdbd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
   border: none;
-  border-radius: 4px;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: 0.2s;
+  font-weight: bold;
+  border-radius: 50%;
 }
 
 button:hover {
-  background-color: #1565c0;
+  background-color: #bbb7e5;
 }
 </style>
