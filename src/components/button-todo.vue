@@ -1,33 +1,30 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
-import addIcon from './icons/icon-add.vue'
+import { RouteName } from '@/router'
+import addIcon from './icons/icon-arrow.vue'
 
 const router = useRouter()
+
 function goToTodo() {
-  router.push('/todo')
+  router.push({ name: RouteName.TODOLIST })
 }
 </script>
 
 <template>
   <button @click="goToTodo">
+    GO TO MY TO-DO LIST
     <addIcon style="width: 1em; height: 1em; vertical-align: middle" />
-    GET STARTED
   </button>
 </template>
 
 <style scoped>
 button {
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
- background-color: #bbb7e5;
-  color: black;
-  border: none;
-  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 16px;
   cursor: pointer;
-  transition: background 0.2s;
-  font-weight: bold;
-}
-button:hover {
-  background-color: #aaa6cd;
+  border: none;
+  background-color: rgb(115, 78, 78);
+  color: white;
+  border-radius: 5px;
 }
 </style>

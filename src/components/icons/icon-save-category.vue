@@ -4,7 +4,7 @@
 
 <script>
 import SvgIcon from '@jamescoyle/vue-icon';
-import { mdiCheckCircle } from '@mdi/js';
+import { mdiContentSaveOutline } from '@mdi/js';
 
 export default {
   name: "my-component",
@@ -13,7 +13,7 @@ export default {
   },
   data() {
     return {
-       path: mdiCheckCircle,
+       path: mdiContentSaveOutline,
     }
   }
 }

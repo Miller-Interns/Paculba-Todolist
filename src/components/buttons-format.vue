@@ -3,14 +3,14 @@ defineProps<{
   buttons: {
     label: string
     class?: string
-    icon: any  
+    icon: any
     onClick: () => void
   }[]
 }>()
 </script>
 
 <template>
-  <div class="flex gap-2">
+  <div class="button-container">
     <button
       v-for="button in buttons"
       :key="button.label"
@@ -32,24 +32,22 @@ defineProps<{
 }
 
 button {
+  width: 2rem;
+  height: 2rem;
+  color: black;
+  background: #efbdbd;
   display: flex;
   align-items: center;
-  gap: 0.4rem;
-  padding: 0.3rem 1rem;
+  justify-content: center;
   font-size: 0.8rem;
-  background-color: #efbdbd;
-  color: black;
   border: none;
-  border-radius: 4px;
   cursor: pointer;
   transition: 0.2s;
   font-weight: bold;
-
+  border-radius: 50%;
 }
 
 button:hover {
   background-color: #bbb7e5;
 }
 </style>
-
-

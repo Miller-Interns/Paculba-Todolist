@@ -1,22 +1,20 @@
 <template>
-  <svg-icon type="mdi" :path="path" width="20" height="20" fill="currentColor">
-  </svg-icon>
+  <svg-icon type="mdi" :path="path"></svg-icon>
 </template>
 
-<script lang="ts">
-import SvgIcon from '@jamescoyle/vue-icon';
-import { mdiNotePlusOutline  } from '@mdi/js';
+<script>
+import SvgIcon from '@jamescoyle/vue-icon'
+import { mdiPlusCircle } from '@mdi/js'
 
 export default {
-  name: "my-component",
+  name: 'my-component',
   components: {
-    SvgIcon
+    SvgIcon,
   },
   data() {
     return {
-       path: mdiNotePlusOutline ,
+      path: mdiPlusCircle,
     }
-  }
+  },
 }
 </script>
-

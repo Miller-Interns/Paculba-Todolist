@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { ref, watch } from 'vue'
-import type { Task } from '@/types/types.ts'
+import type { Task } from '@/interface/interfaces.ts'
 
 export const useTasksStore = defineStore('tasks', () => {
   const tasks = ref<Task[]>([])
@@ -13,11 +13,11 @@ export const useTasksStore = defineStore('tasks', () => {
     }
   }
 
-    const saveTasks = () => {
+  const saveTasks = () => {
     localStorage.setItem('tasks', JSON.stringify(tasks.value))
   }
 
-    watch(tasks, saveTasks, { deep: true })
+  watch(tasks, saveTasks, { deep: true })
 
   const addTask = () => {
     tasks.value.push({
@@ -28,19 +28,19 @@ export const useTasksStore = defineStore('tasks', () => {
     })
   }
 
-    const updateTask = (updated: Task) => {
-    const index = tasks.value.findIndex(t => t.id === updated.id)
+  const updateTask = (updated: Task) => {
+    const index = tasks.value.findIndex((t) => t.id === updated.id)
     if (index !== -1) {
       tasks.value[index] = updated
     }
   }
 
   const deleteTask = (id: number) => {
-    tasks.value = tasks.value.filter(t => t.id !== id)
+    tasks.value = tasks.value.filter((t) => t.id !== id)
   }
 
-    const toggleTaskCompletion = (id: number) => {
-    const task = tasks.value.find(t => t.id === id)
+  const toggleTaskCompletion = (id: number) => {
+    const task = tasks.value.find((t) => t.id === id)
     if (task) {
       task.isCompleted = !task.isCompleted
     }

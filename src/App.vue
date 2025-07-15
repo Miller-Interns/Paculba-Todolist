@@ -2,11 +2,11 @@
 import { RouterView } from 'vue-router'
 
 </script>
+
 <template>
   <main class="app-container">
-   <RouterView />
+   <router-view></router-view>
   </main>
-
 </template>
 
 <style scoped>
@@ -19,3 +19,4 @@ import { RouterView } from 'vue-router'
   align-items: center;
 }
 </style>
+c
